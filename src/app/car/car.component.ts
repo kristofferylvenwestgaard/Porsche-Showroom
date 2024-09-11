@@ -1,12 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Cars } from '../cars';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 //Car card component for showing each car and it's attributes
 @Component({
   selector: 'app-car',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   template: `
     <div class="car-card">
       <div class="car-card-top">
@@ -14,11 +15,12 @@ import { Cars } from '../cars';
       </div>
       <div class="car-card-bottom">
         <h2 class="listing-location">{{ cars.name }}</h2>
-        <p class="label">{{ cars.fuel }}</p>
-        <p class="label">{{ cars.accelleration }}</p>
-        <p class="label">{{ cars.reach }}</p>
-        <p class="label">{{ cars.topSpeed }}</p>
-      <div class="car-card-bottom">
+        <p class="label">ENGINE: {{ cars.fuel }}</p>
+        <p class="label">0-100KM/H: {{ cars.accelleration }}S</p>
+        <p class="label">REACH WLTP: {{ cars.reach }}KM</p>
+        <p class="label">TOP SPEED: {{ cars.topSpeed }}KM/H</p>
+        <a routerLink="/show-car-component" routerLinkActive="active" ariaCurrentWhenActive="page">View car</a>
+      </div>
     </div>
   `,
   styleUrl: './car.component.scss'
